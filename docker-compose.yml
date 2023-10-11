@@ -1,0 +1,10 @@
+version: '3'
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8123:8123"
+    volumes:
+      - ./ddl/create_table.sql:/docker-entrypoint-initdb.d/init_create_table.sql
+      - ./dml/insert_init_data.sql:/docker-entrypoint-initdb.d/insert_init_data.sql
+
